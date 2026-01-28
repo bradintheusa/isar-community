@@ -102,35 +102,39 @@ class Package {
     final publisher = publishers.isNotEmpty
         ? publishers.first.substring(10)
         : null;
-    return copyWith(
-      points: metrics.grantedPoints,
-      likes: metrics.likeCount,
-      popularity: metrics.popularityScore,
-      publisher: publisher,
-      dart: metrics.tags.contains('sdk:dart'),
-      flutter: metrics.tags.contains('sdk:flutter'),
-      flutterFavorite: metrics.tags.contains('is:flutter-favorite'),
-      license: metrics.tags
-          .firstWhere(
-            (e) =>
-                e.startsWith('license:') &&
-                e != 'license:osi-approved' &&
-                e != 'license:fsf-libre',
-            orElse: () => 'license:unknown',
-          )
-          .substring(8)
-          .toUpperCase(),
-      osiLicense: metrics.tags.contains('license:osi-approved'),
-      platforms: [
-        if (metrics.tags.contains('platform:web')) SupportedPlatform.web,
-        if (metrics.tags.contains('platform:android'))
-          SupportedPlatform.android,
-        if (metrics.tags.contains('platform:ios')) SupportedPlatform.ios,
-        if (metrics.tags.contains('platform:linux')) SupportedPlatform.linux,
-        if (metrics.tags.contains('platform:macos')) SupportedPlatform.macos,
-        if (metrics.tags.contains('platform:windows'))
-          SupportedPlatform.windows,
-      ],
+    return copyWithMetrics(
+      ApiPackageMetrics(
+        grantedPoints: metrics.grantedPoints,
+        likeCount: metrics.likeCount,
+        popularityScore: metrics.popularityScore,
+        maxPoints: 0,
+        tags: [],
+        // publisher: publisher,
+        // dart: metrics.tags.contains('sdk:dart'),
+        // flutter: metrics.tags.contains('sdk:flutter'),
+        // flutterFavorite: metrics.tags.contains('is:flutter-favorite'),
+        // license: metrics.tags
+        //     .firstWhere(
+        //       (e) =>
+        //           e.startsWith('license:') &&
+        //           e != 'license:osi-approved' &&
+        //           e != 'license:fsf-libre',
+        //       orElse: () => 'license:unknown',
+        //     )
+        //     .substring(8)
+        //     .toUpperCase(),
+        // osiLicense: metrics.tags.contains('license:osi-approved'),
+        // platforms: [
+        //   if (metrics.tags.contains('platform:web')) SupportedPlatform.web,
+        //   if (metrics.tags.contains('platform:android'))
+        //     SupportedPlatform.android,
+        //   if (metrics.tags.contains('platform:ios')) SupportedPlatform.ios,
+        //   if (metrics.tags.contains('platform:linux')) SupportedPlatform.linux,
+        //   if (metrics.tags.contains('platform:macos')) SupportedPlatform.macos,
+        //   if (metrics.tags.contains('platform:windows'))
+        //     SupportedPlatform.windows,
+        // ],
+      ),
     );
   }
 }

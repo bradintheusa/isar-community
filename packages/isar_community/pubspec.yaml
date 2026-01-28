@@ -24,6 +24,6 @@ dependencies:
   meta: ^1.7.0
 
 dev_dependencies:
-  ffigen: ^19.0.0
+  ffigen: ^20.1.1
   test: any
-  very_good_analysis: ^3.0.1
+  very_good_analysis: ^10.0.0

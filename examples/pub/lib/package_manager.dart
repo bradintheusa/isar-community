@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:isar_community/isar.dart';
 import 'package:pub_app/asset_loader.dart';
+import 'package:pub_app/models/api/metrics.dart';
 import 'package:pub_app/models/asset.dart';
 import 'package:pub_app/models/package.dart';
 import 'package:pub_app/repository.dart';
@@ -109,7 +110,7 @@ class PackageManager {
         .firstWhere((e) => e.isLatest)
         .version;
     if (currentLatest != null && currentLatest.version != newLatestVersion) {
-      versionsToAdd.add(currentLatest.copyWith(isLatest: false));
+      versionsToAdd.add(currentLatest.copyWithMetrics(ApiPackageMetrics(grantedPoints: 0, maxPoints: 0, likeCount: 0, popularityScore: 0, tags: [])));
     }
 
     if (loadMetrics) {
