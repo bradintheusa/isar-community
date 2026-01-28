@@ -11,7 +11,7 @@ Use it like this
       url: https://github.com/bradintheusa/isar-community
       path: packages/isar_community_flutter_libs
 
-# All of these are needed to avoid https://github.com/isar-community/isar-community/issues/88
+
 dependency_overrides:
   isar_community: #^3.3.0
     git: 
