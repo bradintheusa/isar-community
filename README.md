@@ -1,5 +1,9 @@
 
-Use it like this
+
+This updates 3.3.0 to use more recent dependencies.
+
+
+Use it like this.
 
 ```
   isar_community: #^3.3.0
